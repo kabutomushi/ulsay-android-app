@@ -63,7 +63,9 @@ public class GetNewsTask extends AsyncTask<String, Integer, String> {
 //						Log.d("ulsay", json.getString("description"));
 						item.setTitle(json.getString("title"));
 						item.setDescription(json.getString("description"));
-						mNewsCards.add(item);
+						if (item.getTitle().length() < 11*3 ) {
+							mNewsCards.add(item);
+						}
 					}
  				   
 				} catch (Exception e) {

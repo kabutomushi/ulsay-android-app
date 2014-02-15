@@ -133,7 +133,7 @@ public class UlsayActivity extends Activity {
 //		Toast.makeText(this, "SAY!" + card.getTitle(), Toast.LENGTH_LONG)
 //				.show();
 		Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
-        vibrator.vibrate(500);
+        vibrator.vibrate(800);
 		mTouchTextView.setTextColor(getResources().getColor(R.color.Title));
 		mSayBar.setVisibility(View.INVISIBLE);
 		SayTask sayTask = new SayTask(this);

@@ -53,6 +53,10 @@ public class NewsCardAdapter extends ArrayAdapter<NewsCardData> {
 		descriptionTextView = (TextView) convertView.findViewById(R.id.newsDescription);
 		//フォント設定
 		descriptionTextView.setTypeface(mDescriptionFace);
+		//文字数調整
+		if(item.getDescription().length() < 22*4+3 && item.getDescription().length() > 22*2+3){
+			item.setDescription(item.getDescription() + "　　　　　　　　　　　　　　　　　　　　　　　　");
+		}
 		descriptionTextView.setText(item.getDescription());
 
 		// アニメーションを設定
