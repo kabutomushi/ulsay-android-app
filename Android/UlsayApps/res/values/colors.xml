@@ -2,4 +2,10 @@
 <resources>
     <color name="touchedTitle">#a80000</color>  
     <color name="Title">#111111</color>  
+    <color name="titleBackGround">#ffffff</color>  
+    <color name="description">#444444</color>  
+    <color name="descriptionBackGround">#f0f0f0</color>  
+    <color name="cardBordar">#cccccc</color>  
+    <color name="background">#ededeb</color>  
+    
 </resources>

@@ -11,6 +11,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.graphics.Bitmap;
@@ -129,8 +130,10 @@ public class UlsayActivity extends Activity {
 
 		NewsCardData card = mNewsData.get(mCardId);
 		Log.d("ulsay", "title:" + card.getTitle());
-		Toast.makeText(this, "SAY!" + card.getTitle(), Toast.LENGTH_LONG)
-				.show();
+//		Toast.makeText(this, "SAY!" + card.getTitle(), Toast.LENGTH_LONG)
+//				.show();
+		Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+        vibrator.vibrate(500);
 		mTouchTextView.setTextColor(getResources().getColor(R.color.Title));
 		mSayBar.setVisibility(View.INVISIBLE);
 		SayTask sayTask = new SayTask(this);
@@ -139,9 +142,17 @@ public class UlsayActivity extends Activity {
 
 	public void completeSay() {
 		NewsCardData card = mNewsData.get(mCardId);
-		Toast.makeText(this, "Said:" + card.getTitle(), Toast.LENGTH_LONG)
-				.show();
+//		Toast.makeText(this, "Said:" + card.getTitle(), Toast.LENGTH_LONG)
+//				.show();
 		mCardId = 0;
 	}
+	
+	public void onClickTitleBar(View view) {
+
+		getNewsRSS();
+		Toast.makeText(this, "Reloading...", Toast.LENGTH_LONG)
+				.show();
+	}
+
 
 }

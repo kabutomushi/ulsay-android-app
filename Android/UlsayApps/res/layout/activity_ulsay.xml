@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".UlsayActivity"
-    android:divider="#d8d8d8"
+    android:divider="@color/background"
      >
 
     <include layout="@layout/ulsay_title"/>
@@ -16,7 +16,7 @@
             android:id="@+id/content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:divider="#d8d8d8"
+            android:divider="@color/background"
             android:dividerHeight="12dp"
             android:fadingEdge="none" />
 

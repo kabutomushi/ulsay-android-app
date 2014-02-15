@@ -51,7 +51,7 @@ public class GetNewsTask extends AsyncTask<String, Integer, String> {
 				ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 				response.getEntity().writeTo(outputStream);
 				data = outputStream.toString();
-				Log.d("ulsay", data);
+//				Log.d("ulsay", data);
 
 				// JSON‚ğƒp[ƒX‚·‚é
 				try {

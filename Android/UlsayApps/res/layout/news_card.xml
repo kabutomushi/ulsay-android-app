@@ -13,13 +13,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding ="15dp"
-            android:background="#ffffff"
+            android:background="@color/titleBackGround"
             android:maxLines="3"
             android:ellipsize="end"
             android:scrollHorizontally="true"
             android:text="いいえ、ためふさのせいです"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="#111111"
+            android:textColor="@color/Title"
             android:textSize="28sp" />
 
         <TextView
@@ -30,15 +30,15 @@
             android:maxLines="4"
             android:ellipsize="end"
             android:scrollHorizontally="true"
-            android:background="#ececec"
+            android:background="@color/descriptionBackGround"
             android:text="いいえ、ためふさのせいです"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textColor="#333333"
+            android:textColor="@color/description"
             android:textSize="15sp" />
         <TextView 
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:textColor="#979797"
+            android:background="@color/cardBordar"
             />
     </LinearLayout>
 
