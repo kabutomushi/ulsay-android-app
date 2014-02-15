@@ -15,10 +15,12 @@ import android.app.Activity;
 import android.app.FragmentTransaction;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
@@ -28,6 +30,7 @@ import android.widget.AdapterViewFlipper;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class UlsayActivity extends Activity {
@@ -38,6 +41,7 @@ public class UlsayActivity extends Activity {
 	private String mData;
 	private ListView mListView;
 	private ArrayList<NewsCardData> mNewsData;
+	private TextView mTouchTextView;
 
 	public String getData() {
 		return mData;
@@ -52,7 +56,7 @@ public class UlsayActivity extends Activity {
 		super.onCreate(savedInstanceState);
 
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-	    setContentView(R.layout.activity_ulsay);
+		setContentView(R.layout.activity_ulsay);
 
 		mListView = (ListView) findViewById(R.id.content);
 		mSayButton = (Button) findViewById(R.id.sayButton);
@@ -64,10 +68,17 @@ public class UlsayActivity extends Activity {
 
 		// 記事タップでSayボタン表示
 		mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
 			@Override
-			public void onItemClick(AdapterView<?> arg0, View view,
+			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				Log.d("ulsay", "num = " + position);
+				Log.d("ulsay", "num = " + view);
+				// 色かえ
+				TextView v = (TextView) ((ViewGroup) ((ViewGroup) view)
+						.getChildAt(0)).getChildAt(0);
+				v.setTextColor(getResources().getColor(R.color.touchedTitle));
+
+				mTouchTextView = v;
 				mCardId = position;
 				mSayBar.setVisibility(View.VISIBLE);
 			}
@@ -79,6 +90,11 @@ public class UlsayActivity extends Activity {
 			@Override
 			public void onScroll(AbsListView arg0, int arg1, int arg2, int arg3) {
 				mSayBar.setVisibility(View.INVISIBLE);
+				if (mTouchTextView != null) {
+					mTouchTextView.setTextColor(getResources().getColor(
+							R.color.Title));
+
+				}
 			}
 
 			@Override
@@ -115,6 +131,7 @@ public class UlsayActivity extends Activity {
 		Log.d("ulsay", "title:" + card.getTitle());
 		Toast.makeText(this, "SAY!" + card.getTitle(), Toast.LENGTH_LONG)
 				.show();
+		mTouchTextView.setTextColor(getResources().getColor(R.color.Title));
 		mSayBar.setVisibility(View.INVISIBLE);
 		SayTask sayTask = new SayTask(this);
 		sayTask.execute(card.getTitle());
@@ -123,8 +140,8 @@ public class UlsayActivity extends Activity {
 	public void completeSay() {
 		NewsCardData card = mNewsData.get(mCardId);
 		Toast.makeText(this, "Said:" + card.getTitle(), Toast.LENGTH_LONG)
-		.show();
-		mCardId=0;
+				.show();
+		mCardId = 0;
 	}
 
 }

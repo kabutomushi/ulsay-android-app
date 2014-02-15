@@ -59,10 +59,10 @@ public class GetNewsTask extends AsyncTask<String, Integer, String> {
 					mNewsCards = new ArrayList<NewsCardData>();
 					for (int i = 0; i < jsonArray.length(); i++) {
 						JSONObject json = jsonArray.getJSONObject(i);
-						Log.d("ulsay", json.getString("title"));
 						NewsCardData item = new NewsCardData();
+//						Log.d("ulsay", json.getString("description"));
 						item.setTitle(json.getString("title"));
-						item.setDescription(json.getString("summary"));
+						item.setDescription(json.getString("description"));
 						mNewsCards.add(item);
 					}
  				   

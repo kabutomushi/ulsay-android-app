@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,13 +42,17 @@ public class NewsCardAdapter extends ArrayAdapter<NewsCardData> {
 		textView = (TextView) convertView.findViewById(R.id.newsTitle);
 		//フォント設定
 		textView.setTypeface(mFace);
+		//文字数調整
+		if(item.getTitle().length() < 40){
+			item.setTitle(item.getTitle() + "　　　　　　　　　　　　　　　　　　　　");
+		}
 		textView.setText(item.getTitle());
 		//データ入れる
 		TextView descriptionTextView;
 		descriptionTextView = (TextView) convertView.findViewById(R.id.newsDescription);
 		//フォント設定
-		descriptionTextView.setTypeface(mFace);
-		descriptionTextView.setText(item.getTitle());
+//		descriptionTextView.setTypeface(mFace);
+		descriptionTextView.setText(item.getDescription());
 
 		// アニメーションを設定
 		if (mLastAnimationPosition < position) {

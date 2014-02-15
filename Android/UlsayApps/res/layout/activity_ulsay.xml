@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:divider="#d8d8d8"
-            android:dividerHeight="8dp"
+            android:dividerHeight="12dp"
             android:fadingEdge="none" />
 
         <FrameLayout
