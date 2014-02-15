@@ -42,7 +42,7 @@ public class NewsCardAdapter extends ArrayAdapter<NewsCardData> {
 		TextView textView;
 		textView = (TextView) convertView.findViewById(R.id.newsTitle);
 		//ÉtÉHÉìÉgê›íË
-		Typeface face = Typeface.createFromAsset(mContext.getAssets(), "hiragino.ttf");
+		Typeface face = Typeface.createFromAsset(mContext.getAssets(), "titleFont.ttf");
 		textView.setTypeface(face);
 		textView.setText(item.getTitle());
 
