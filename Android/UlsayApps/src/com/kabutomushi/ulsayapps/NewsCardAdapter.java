@@ -2,6 +2,7 @@ package com.kabutomushi.ulsayapps;
 
 import java.util.List;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -40,6 +41,9 @@ public class NewsCardAdapter extends ArrayAdapter<NewsCardData> {
 
 		TextView textView;
 		textView = (TextView) convertView.findViewById(R.id.newsTitle);
+		//フォント設定
+		Typeface face = Typeface.createFromAsset(mContext.getAssets(), "hiragino.ttf");
+		textView.setTypeface(face);
 		textView.setText(item.getTitle());
 
 		// アニメーションを設定
