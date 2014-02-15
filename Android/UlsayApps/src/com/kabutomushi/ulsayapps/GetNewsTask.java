@@ -57,14 +57,12 @@ public class GetNewsTask extends AsyncTask<String, Integer, String> {
 				try {
 					JSONArray jsonArray = new JSONArray(data);
 					mNewsCards = new ArrayList<NewsCardData>();
-//					Bitmap img;
-//					img = BitmapFactory.decodeResource(mActivity.getResources(), R.drawable.sample);
 					for (int i = 0; i < jsonArray.length(); i++) {
 						JSONObject json = jsonArray.getJSONObject(i);
 						Log.d("ulsay", json.getString("title"));
 						NewsCardData item = new NewsCardData();
 						item.setTitle(json.getString("title"));
-//						item.setImg(img);
+						item.setDescription(json.getString("summary"));
 						mNewsCards.add(item);
 					}
  				   

@@ -12,8 +12,10 @@ import org.apache.http.impl.client.DefaultHttpClient;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.FragmentTransaction;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -24,6 +26,7 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterViewFlipper;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -31,6 +34,7 @@ public class UlsayActivity extends Activity {
 
 	int mCardId;
 	private Button mSayButton;
+	private FrameLayout mSayBar;
 	private String mData;
 	private ListView mListView;
 	private ArrayList<NewsCardData> mNewsData;
@@ -47,12 +51,13 @@ public class UlsayActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
-		setContentView(R.layout.activity_ulsay);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+	    setContentView(R.layout.activity_ulsay);
 
 		mListView = (ListView) findViewById(R.id.content);
 		mSayButton = (Button) findViewById(R.id.sayButton);
-		mSayButton.setVisibility(View.INVISIBLE);
+		mSayBar = (FrameLayout) findViewById(R.id.sayBar);
+		mSayBar.setVisibility(View.INVISIBLE);
 
 		// ニュースデータを取ってきて表示する
 		getNewsRSS();
@@ -64,7 +69,7 @@ public class UlsayActivity extends Activity {
 					int position, long id) {
 				Log.d("ulsay", "num = " + position);
 				mCardId = position;
-				mSayButton.setVisibility(View.VISIBLE);
+				mSayBar.setVisibility(View.VISIBLE);
 			}
 
 		});
@@ -73,7 +78,7 @@ public class UlsayActivity extends Activity {
 
 			@Override
 			public void onScroll(AbsListView arg0, int arg1, int arg2, int arg3) {
-				mSayButton.setVisibility(View.INVISIBLE);
+				mSayBar.setVisibility(View.INVISIBLE);
 			}
 
 			@Override
@@ -110,7 +115,7 @@ public class UlsayActivity extends Activity {
 		Log.d("ulsay", "title:" + card.getTitle());
 		Toast.makeText(this, "SAY!" + card.getTitle(), Toast.LENGTH_LONG)
 				.show();
-		mSayButton.setVisibility(View.INVISIBLE);
+		mSayBar.setVisibility(View.INVISIBLE);
 		SayTask sayTask = new SayTask(this);
 		sayTask.execute(card.getTitle());
 	}

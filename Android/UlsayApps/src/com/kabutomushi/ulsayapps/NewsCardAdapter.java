@@ -16,6 +16,7 @@ public class NewsCardAdapter extends ArrayAdapter<NewsCardData> {
 	private LayoutInflater layoutInflater;
 	private int mLastAnimationPosition = 0;
 	private Context mContext;
+	private Typeface mFace;
 
 	public NewsCardAdapter(Context context, int textViewResourceId,
 			List<NewsCardData> objects) {
@@ -23,6 +24,7 @@ public class NewsCardAdapter extends ArrayAdapter<NewsCardData> {
 		layoutInflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		mContext = context;
+		mFace = Typeface.createFromAsset(mContext.getAssets(), "titleFont.ttf");
 		
 	}
 
@@ -35,16 +37,17 @@ public class NewsCardAdapter extends ArrayAdapter<NewsCardData> {
 		}
 
 		//データ入れる
-		ImageView imageView;
-		imageView = (ImageView) convertView.findViewById(R.id.newsISmage);
-		imageView.setImageBitmap(item.getImg());
-
 		TextView textView;
 		textView = (TextView) convertView.findViewById(R.id.newsTitle);
 		//フォント設定
-		Typeface face = Typeface.createFromAsset(mContext.getAssets(), "titleFont.ttf");
-		textView.setTypeface(face);
+		textView.setTypeface(mFace);
 		textView.setText(item.getTitle());
+		//データ入れる
+		TextView descriptionTextView;
+		descriptionTextView = (TextView) convertView.findViewById(R.id.newsDescription);
+		//フォント設定
+		descriptionTextView.setTypeface(mFace);
+		descriptionTextView.setText(item.getTitle());
 
 		// アニメーションを設定
 		if (mLastAnimationPosition < position) {

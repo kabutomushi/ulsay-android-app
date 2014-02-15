@@ -1,23 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="500dp"
-    android:minHeight="500dp" 
-    >
+    android:layout_height="300dp"
+    android:minHeight="300dp" >
 
-    <ImageView
-        android:id="@+id/newsISmage"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/sample" />
+        android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/newsTitle"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textColor="#000000"
-        android:textSize="35sp"
-        android:text="いいえ、ためふさのせいです"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        <TextView
+            android:id="@+id/newsTitle"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="#ffffff"
+            android:text="いいえ、ためふさのせいです"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#111111"
+            android:textSize="35sp" />
+
+        <TextView
+            android:id="@+id/newsDescription"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#ececec"
+            android:text="いいえ、ためふさのせいです"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#333333"
+            android:textSize="20sp" />
+    </LinearLayout>
 
 </FrameLayout>
