@@ -10,6 +10,7 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.app.Activity;
@@ -43,6 +44,7 @@ public class UlsayActivity extends Activity {
 	private ListView mListView;
 	private ArrayList<NewsCardData> mNewsData;
 	private TextView mTouchTextView;
+	private MediaPlayer mMp;
 
 	public String getData() {
 		return mData;
@@ -63,6 +65,9 @@ public class UlsayActivity extends Activity {
 		mSayButton = (Button) findViewById(R.id.sayButton);
 		mSayBar = (FrameLayout) findViewById(R.id.sayBar);
 		mSayBar.setVisibility(View.INVISIBLE);
+		
+		//音声の準備
+		mMp = MediaPlayer.create(this, R.raw.call_up);
 
 		// ニュースデータを取ってきて表示する
 		getNewsRSS();
@@ -134,6 +139,7 @@ public class UlsayActivity extends Activity {
 //				.show();
 		Vibrator vibrator = (Vibrator) getSystemService(VIBRATOR_SERVICE);
         vibrator.vibrate(800);
+//        mMp.start();
 		mTouchTextView.setTextColor(getResources().getColor(R.color.Title));
 		mSayBar.setVisibility(View.INVISIBLE);
 		SayTask sayTask = new SayTask(this);
